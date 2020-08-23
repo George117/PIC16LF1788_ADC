@@ -34,10 +34,21 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 
 void Configure_ADC_Module(void);
-void Configure_ADC_AN0(void);
+void Configure_ADC_Channel(unsigned char channel);
 
-int Get_Value_From_AN0(void);
+int Get_Value_From_Channel(unsigned char channel);
 
+#define AN0  0b00000
+#define AN1  0b00001
+#define AN2  0b00010
+#define AN3  0b00011
+#define AN4  0b00100
+#define AN8  0b01000
+#define AN9  0b01001
+#define AN10 0b01010
+#define AN11 0b01011
+#define AN12 0b01100
+#define AN13 0b01101
 
 
 #ifdef	__cplusplus

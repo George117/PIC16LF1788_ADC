@@ -10307,9 +10307,9 @@ void Configure_Clock(void);
 # 1 "./adc_module.h" 1
 # 36 "./adc_module.h"
 void Configure_ADC_Module(void);
-void Configure_ADC_AN0(void);
+void Configure_ADC_Channel(unsigned char channel);
 
-int Get_Value_From_AN0(void);
+int Get_Value_From_Channel(unsigned char channel);
 # 11 "main.c" 2
 
 
@@ -10321,12 +10321,15 @@ void main(void)
 {
     IO_First_Init();
     Configure_Clock();
+
     Configure_ADC_Module();
-    Configure_ADC_AN0();
+    Configure_ADC_Channel(0b01101);
+
+
 
 
     while(1){
-        adc_result = Get_Value_From_AN0() * 3.339/4096;
+        adc_result = Get_Value_From_Channel(0b01101) * 3.339/4096;
 
         LATCbits.LATC7 = 0;
         _delay((unsigned long)((1)*(32000000/4000.0)));

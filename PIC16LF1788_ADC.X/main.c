@@ -18,12 +18,15 @@ void main(void)
 {
     IO_First_Init();
     Configure_Clock();    
-    Configure_ADC_Module();
-    Configure_ADC_AN0();
     
+    Configure_ADC_Module();
+    Configure_ADC_Channel(AN13);
+
+
+
     
     while(1){
-        adc_result = Get_Value_From_AN0() * resolution;
+        adc_result = Get_Value_From_Channel(AN13) * resolution;
         
         LATCbits.LATC7 = 0;
         __delay_ms(1);

@@ -10280,10 +10280,32 @@ extern __bank0 __bit __timeout;
 
 
 void Configure_ADC_Module(void);
-void Configure_ADC_AN0(void);
+void Configure_ADC_Channel(unsigned char channel);
 
-int Get_Value_From_AN0(void);
+int Get_Value_From_Channel(unsigned char channel);
 # 8 "adc_module.c" 2
+
+# 1 "./bit_settings.h" 1
+# 18 "./bit_settings.h"
+#pragma config FOSC = INTOSC
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config MCLRE = ON
+#pragma config CP = OFF
+#pragma config CPD = OFF
+#pragma config BOREN = OFF
+#pragma config CLKOUTEN = OFF
+#pragma config IESO = OFF
+#pragma config FCMEN = ON
+
+
+#pragma config WRT = OFF
+#pragma config PLLEN = ON
+#pragma config STVREN = ON
+#pragma config BORV = LO
+#pragma config LPBOR = OFF
+#pragma config LVP = ON
+# 9 "adc_module.c" 2
 
 
 
@@ -10319,27 +10341,91 @@ void Configure_ADC_Module(void)
 
 
 
-void Configure_ADC_AN0(void)
+void Configure_ADC_Channel(unsigned char channel)
 {
-    TRISAbits.TRISA0 = 1;
+    switch(channel){
+        case(0b00000):
+            TRISAbits.TRISA0 = 1;
+            ANSELAbits.ANSA0 = 1;
+            WPUAbits.WPUA0 = 0;
+            break;
 
-    ANSELAbits.ANSA0 = 1;
+        case(0b00001):
+            TRISAbits.TRISA1 = 1;
+            ANSELAbits.ANSA1 = 1;
+            WPUAbits.WPUA1 = 0;
+            break;
 
-    WPUAbits.WPUA0 = 0;
+        case(0b00010):
+            TRISAbits.TRISA2 = 1;
+            ANSELAbits.ANSA2 = 1;
+            WPUAbits.WPUA2 = 0;
+            break;
 
-    ADCON0bits.CHS4 = 0;
-    ADCON0bits.CHS3 = 0;
-    ADCON0bits.CHS2 = 0;
-    ADCON0bits.CHS1 = 0;
-    ADCON0bits.CHS0 = 0;
+        case(0b00011):
+            TRISAbits.TRISA3 = 1;
+            ANSELAbits.ANSA3 = 1;
+            WPUAbits.WPUA3 = 0;
+            break;
+
+        case(0b00100):
+            TRISAbits.TRISA5 = 1;
+            ANSELAbits.ANSA5 = 1;
+            WPUAbits.WPUA5 = 0;
+            break;
+
+        case(0b01000):
+            TRISBbits.TRISB2 = 1;
+            ANSELBbits.ANSB2 = 1;
+            WPUBbits.WPUB2 = 0;
+            break;
+
+        case(0b01001):
+            TRISBbits.TRISB3 = 1;
+            ANSELBbits.ANSB3 = 1;
+            WPUBbits.WPUB3 = 0;
+            break;
+
+        case(0b01010):
+            TRISBbits.TRISB1 = 1;
+            ANSELBbits.ANSB1 = 1;
+            WPUBbits.WPUB1 = 0;
+            break;
+
+        case(0b01011):
+            TRISBbits.TRISB4 = 1;
+            ANSELBbits.ANSB4 = 1;
+            WPUBbits.WPUB4 = 0;
+            break;
+
+        case(0b01100):
+            TRISBbits.TRISB0 = 1;
+            ANSELBbits.ANSB0 = 1;
+            WPUBbits.WPUB0 = 0;
+            break;
+
+        case(0b01101):
+            TRISBbits.TRISB5 = 1;
+            ANSELBbits.ANSB5 = 1;
+            WPUBbits.WPUB5 = 0;
+            break;
+
+        default:
+            __asm("reset");
+    }
+
 }
 
 
-int Get_Value_From_AN0(void)
+int Get_Value_From_Channel(unsigned char channel)
 {
     unsigned short rez_adc = 0;
     unsigned short high_reg = 0;
     unsigned short low_reg = 0;
+
+    ADCON0bits.CHS = channel;
+
+    _delay((unsigned long)((100)*(32000000/4000000.0)));
 
 
     ADCON0bits.GO = 1;

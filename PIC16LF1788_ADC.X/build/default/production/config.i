@@ -10283,13 +10283,6 @@ void IO_First_Init(void);
 void Configure_Clock(void);
 # 10 "config.c" 2
 
-# 1 "./adc_module.h" 1
-# 36 "./adc_module.h"
-void Configure_ADC_Module(void);
-void Configure_ADC_AN0(void);
-
-int Get_Value_From_AN0(void);
-# 11 "config.c" 2
 
 
 

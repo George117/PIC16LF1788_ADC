@@ -10,11 +10,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./adc_module.h: 36: void Configure_ADC_Module(void);
 [v _Configure_ADC_Module `(v ~T0 @X0 0 ef ]
 "37
-[; ;./adc_module.h: 37: void Configure_ADC_AN0(void);
-[v _Configure_ADC_AN0 `(v ~T0 @X0 0 ef ]
+[; ;./adc_module.h: 37: void Configure_ADC_Channel(unsigned char channel);
+[v _Configure_ADC_Channel `(v ~T0 @X0 0 ef1`uc ]
 "39
-[; ;./adc_module.h: 39: int Get_Value_From_AN0(void);
-[v _Get_Value_From_AN0 `(i ~T0 @X0 0 ef ]
+[; ;./adc_module.h: 39: int Get_Value_From_Channel(unsigned char channel);
+[v _Get_Value_From_Channel `(i ~T0 @X0 0 ef1`uc ]
 "2477 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 2477:     struct {
 [s S131 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -1035,53 +1035,56 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x LPBOR = OFF ]
 "35
 [p x LVP = ON ]
+"15 main.c
+[; ;main.c: 15: float adc_result;
+[v _adc_result `f ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"13 main.c
-[; ;main.c: 13: void main(void)
+"17
+[; ;main.c: 17: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"14
-[; ;main.c: 14: {
+"18
+[; ;main.c: 18: {
 {
 [e :U _main ]
 [f ]
-"15
-[; ;main.c: 15:     IO_First_Init();
+"19
+[; ;main.c: 19:     IO_First_Init();
 [e ( _IO_First_Init ..  ]
-"16
-[; ;main.c: 16:     Configure_Clock();
+"20
+[; ;main.c: 20:     Configure_Clock();
 [e ( _Configure_Clock ..  ]
-"17
-[; ;main.c: 17:     Configure_ADC_Module();
+"22
+[; ;main.c: 22:     Configure_ADC_Module();
 [e ( _Configure_ADC_Module ..  ]
-"18
-[; ;main.c: 18:     Configure_ADC_AN0();
-[e ( _Configure_ADC_AN0 ..  ]
-"21
-[; ;main.c: 21:     while(1){
+"23
+[; ;main.c: 23:     Configure_ADC_Channel(0b00000);
+[e ( _Configure_ADC_Channel (1 -> -> 0 `i `uc ]
+"28
+[; ;main.c: 28:     while(1){
 [e :U 716 ]
 {
-"22
-[; ;main.c: 22:         Get_Value_From_AN0();
-[e ( _Get_Value_From_AN0 ..  ]
-"24
-[; ;main.c: 24:         LATCbits.LATC7 = 0;
+"29
+[; ;main.c: 29:         adc_result = Get_Value_From_Channel(0b00000) * 3.339/4096;
+[e = _adc_result -> / * -> ( _Get_Value_From_Channel (1 -> -> 0 `i `uc `d .3.339 -> -> 4096 `i `d `f ]
+"31
+[; ;main.c: 31:         LATCbits.LATC7 = 0;
 [e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-"25
-[; ;main.c: 25:         _delay((unsigned long)((1)*(32000000/4000.0)));
+"32
+[; ;main.c: 32:         _delay((unsigned long)((1)*(32000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"26
-[; ;main.c: 26:         LATCbits.LATC7 = 1;
+"33
+[; ;main.c: 33:         LATCbits.LATC7 = 1;
 [e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-"27
-[; ;main.c: 27:         _delay((unsigned long)((1)*(32000000/4000.0)));
+"34
+[; ;main.c: 34:         _delay((unsigned long)((1)*(32000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"28
-[; ;main.c: 28:     }
+"35
+[; ;main.c: 35:     }
 }
 [e :U 715 ]
 [e $U 716  ]
 [e :U 717 ]
-"32
-[; ;main.c: 32: }
+"39
+[; ;main.c: 39: }
 [e :UE 714 ]
 }
