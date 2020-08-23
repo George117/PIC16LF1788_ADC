@@ -1,39 +1,64 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"37 ./config.h
-[; ;./config.h: 37: void IO_First_Init(void);
-[v _IO_First_Init `(v ~T0 @X0 0 ef ]
-"38
-[; ;./config.h: 38: void Configure_Clock(void);
-[v _Configure_Clock `(v ~T0 @X0 0 ef ]
-"36 ./adc_module.h
-[; ;./adc_module.h: 36: void Configure_ADC_Module(void);
-[v _Configure_ADC_Module `(v ~T0 @X0 0 ef ]
-"37
-[; ;./adc_module.h: 37: void Configure_ADC_AN0(void);
-[v _Configure_ADC_AN0 `(v ~T0 @X0 0 ef ]
-"39
-[; ;./adc_module.h: 39: int Get_Value_From_AN0(void);
-[v _Get_Value_From_AN0 `(i ~T0 @X0 0 ef ]
-"2477 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 2477:     struct {
-[s S131 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S131 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
-"2487
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 2487:     struct {
-[s S132 :8 `uc 1 ]
-[n S132 . LATC ]
-"2476
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 2476: typedef union {
-[u S130 `S131 1 `S132 1 ]
-[n S130 . . . ]
-"2491
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 2491: extern volatile LATCbits_t LATCbits __attribute__((address(0x10E)));
-[v _LATCbits `VS130 ~T0 @X0 0 e@270 ]
-[v F5616 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
-[v __delay `JF5616 ~T0 @X0 0 e ]
-[p i __delay ]
+"1195 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 1195: extern volatile unsigned char TRISA __attribute__((address(0x08C)));
+[v _TRISA `Vuc ~T0 @X0 0 e@140 ]
+"1265
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 1265: extern volatile unsigned char TRISB __attribute__((address(0x08D)));
+[v _TRISB `Vuc ~T0 @X0 0 e@141 ]
+"1335
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 1335: extern volatile unsigned char TRISC __attribute__((address(0x08E)));
+[v _TRISC `Vuc ~T0 @X0 0 e@142 ]
+"3676
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 3676: extern volatile unsigned char ANSELA __attribute__((address(0x18C)));
+[v _ANSELA `Vuc ~T0 @X0 0 e@396 ]
+"3741
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 3741: extern volatile unsigned char ANSELB __attribute__((address(0x18D)));
+[v _ANSELB `Vuc ~T0 @X0 0 e@397 ]
+"3805
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 3805: extern volatile unsigned char ANSELC __attribute__((address(0x18E)));
+[v _ANSELC `Vuc ~T0 @X0 0 e@398 ]
+"429
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 429: extern volatile unsigned char PORTA __attribute__((address(0x00C)));
+[v _PORTA `Vuc ~T0 @X0 0 e@12 ]
+"499
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 499: extern volatile unsigned char PORTB __attribute__((address(0x00D)));
+[v _PORTB `Vuc ~T0 @X0 0 e@13 ]
+"569
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 569: extern volatile unsigned char PORTC __attribute__((address(0x00E)));
+[v _PORTC `Vuc ~T0 @X0 0 e@14 ]
+"357
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 357:     struct {
+[s S31 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S31 . IOCIF INTF TMR0IF IOCIE INTE TMR0IE PEIE GIE ]
+"367
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 367:     struct {
+[s S32 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S32 . . T0IF . T0IE ]
+"356
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 356: typedef union {
+[u S30 `S31 1 `S32 1 ]
+[n S30 . . . ]
+"374
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 374: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
+[v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
+"1913
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 1913:     struct {
+[s S105 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S105 . SCS0 SCS1 . IRCF0 IRCF1 IRCF2 IRCF3 SPLLEN ]
+"1923
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 1923:     struct {
+[s S106 :2 `uc 1 :1 `uc 1 :4 `uc 1 ]
+[n S106 . SCS . IRCF ]
+"1912
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 1912: typedef union {
+[u S104 `S105 1 `S106 1 ]
+[n S104 . . . ]
+"1929
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 1929: extern volatile OSCCONbits_t OSCCONbits __attribute__((address(0x099)));
+[v _OSCCONbits `VS104 ~T0 @X0 0 e@153 ]
+"1849
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 1849: extern volatile unsigned char OSCTUNE __attribute__((address(0x098)));
+[v _OSCTUNE `Vuc ~T0 @X0 0 e@152 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1003,85 +1028,81 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15595
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf1788.h: 15595: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"18 ./bit_settings.h
-[p x FOSC = INTOSC ]
-"19
-[p x WDTE = OFF ]
-"20
-[p x PWRTE = OFF ]
-"21
-[p x MCLRE = ON ]
-"22
-[p x CP = OFF ]
-"23
-[p x CPD = OFF ]
-"24
-[p x BOREN = OFF ]
-"25
-[p x CLKOUTEN = OFF ]
-"26
-[p x IESO = OFF ]
-"27
-[p x FCMEN = ON ]
-"30
-[p x WRT = OFF ]
-"31
-[p x PLLEN = ON ]
-"32
-[p x STVREN = ON ]
-"33
-[p x BORV = LO ]
-"34
-[p x LPBOR = OFF ]
-"35
-[p x LVP = ON ]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"13 main.c
-[; ;main.c: 13: void main(void)
-[v _main `(v ~T0 @X0 1 ef ]
-"14
-[; ;main.c: 14: {
-{
-[e :U _main ]
-[f ]
-"15
-[; ;main.c: 15:     IO_First_Init();
-[e ( _IO_First_Init ..  ]
-"16
-[; ;main.c: 16:     Configure_Clock();
-[e ( _Configure_Clock ..  ]
+"16 config.c
+[; ;config.c: 16: void IO_First_Init(void)
+[v _IO_First_Init `(v ~T0 @X0 1 ef ]
 "17
-[; ;main.c: 17:     Configure_ADC_Module();
-[e ( _Configure_ADC_Module ..  ]
-"18
-[; ;main.c: 18:     Configure_ADC_AN0();
-[e ( _Configure_ADC_AN0 ..  ]
-"21
-[; ;main.c: 21:     while(1){
-[e :U 716 ]
+[; ;config.c: 17: {
 {
+[e :U _IO_First_Init ]
+[f ]
+"18
+[; ;config.c: 18:     TRISA = 0x00;
+[e = _TRISA -> -> 0 `i `uc ]
+"19
+[; ;config.c: 19:     TRISB = 0x00;
+[e = _TRISB -> -> 0 `i `uc ]
+"20
+[; ;config.c: 20:     TRISC = 0x00;
+[e = _TRISC -> -> 0 `i `uc ]
 "22
-[; ;main.c: 22:         Get_Value_From_AN0();
-[e ( _Get_Value_From_AN0 ..  ]
+[; ;config.c: 22:     ANSELA = 0x00;
+[e = _ANSELA -> -> 0 `i `uc ]
+"23
+[; ;config.c: 23:     ANSELB = 0x00;
+[e = _ANSELB -> -> 0 `i `uc ]
 "24
-[; ;main.c: 24:         LATCbits.LATC7 = 0;
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-"25
-[; ;main.c: 25:         _delay((unsigned long)((1)*(32000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+[; ;config.c: 24:     ANSELC = 0x00;
+[e = _ANSELC -> -> 0 `i `uc ]
 "26
-[; ;main.c: 26:         LATCbits.LATC7 = 1;
-[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
+[; ;config.c: 26:     PORTA = 0x00;
+[e = _PORTA -> -> 0 `i `uc ]
 "27
-[; ;main.c: 27:         _delay((unsigned long)((1)*(32000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+[; ;config.c: 27:     PORTB = 0x00;
+[e = _PORTB -> -> 0 `i `uc ]
 "28
-[; ;main.c: 28:     }
-}
-[e :U 715 ]
-[e $U 716  ]
-[e :U 717 ]
-"32
-[; ;main.c: 32: }
+[; ;config.c: 28:     PORTC = 0x00;
+[e = _PORTC -> -> 0 `i `uc ]
+"30
+[; ;config.c: 30:     INTCONbits.GIE=0;
+[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
+"31
+[; ;config.c: 31: }
 [e :UE 714 ]
+}
+"35
+[; ;config.c: 35: void Configure_Clock(void)
+[v _Configure_Clock `(v ~T0 @X0 1 ef ]
+"36
+[; ;config.c: 36: {
+{
+[e :U _Configure_Clock ]
+[f ]
+"37
+[; ;config.c: 37:     OSCCONbits.SCS0 = 0;
+[e = . . _OSCCONbits 0 0 -> -> 0 `i `uc ]
+"38
+[; ;config.c: 38:     OSCCONbits.SCS1 = 0;
+[e = . . _OSCCONbits 0 1 -> -> 0 `i `uc ]
+"42
+[; ;config.c: 42:     OSCCONbits.IRCF0 = 1;
+[e = . . _OSCCONbits 0 3 -> -> 1 `i `uc ]
+"43
+[; ;config.c: 43:     OSCCONbits.IRCF1 = 1;
+[e = . . _OSCCONbits 0 4 -> -> 1 `i `uc ]
+"44
+[; ;config.c: 44:     OSCCONbits.IRCF2 = 1;
+[e = . . _OSCCONbits 0 5 -> -> 1 `i `uc ]
+"45
+[; ;config.c: 45:     OSCCONbits.IRCF3 = 1;
+[e = . . _OSCCONbits 0 6 -> -> 1 `i `uc ]
+"56
+[; ;config.c: 56:     OSCTUNE = 0b00011111;
+[e = _OSCTUNE -> -> 31 `i `uc ]
+"59
+[; ;config.c: 59:     OSCCONbits.SPLLEN = 1;
+[e = . . _OSCCONbits 0 7 -> -> 1 `i `uc ]
+"60
+[; ;config.c: 60: }
+[e :UE 715 ]
 }

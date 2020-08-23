@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\PIC16LF1788_ADC.X.production.hex">
+  <executable name="dist/default/debug\PIC16LF1788_ADC.X.debug.hex">
     <memory name="program">
       <units>words</units>
       <length>16384</length>
-      <used>143</used>
-      <free>16241</free>
+      <used>1455</used>
+      <free>14929</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>2048</length>
-      <used>11</used>
-      <free>2037</free>
+      <used>83</used>
+      <free>1965</free>
     </memory>
   </executable>
 </project>

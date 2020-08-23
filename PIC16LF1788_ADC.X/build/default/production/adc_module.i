@@ -1,4 +1,4 @@
-# 1 "config.c"
+# 1 "adc_module.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "config.c" 2
+# 1 "adc_module.c" 2
 
 
 
@@ -14,7 +14,8 @@
 
 
 
-
+# 1 "./adc_module.h" 1
+# 34 "./adc_module.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -10275,59 +10276,80 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 9 "config.c" 2
+# 34 "./adc_module.h" 2
 
-# 1 "./config.h" 1
-# 37 "./config.h"
-void IO_First_Init(void);
-void Configure_Clock(void);
-# 10 "config.c" 2
 
-# 1 "./adc_module.h" 1
-# 36 "./adc_module.h"
 void Configure_ADC_Module(void);
 void Configure_ADC_AN0(void);
 
 int Get_Value_From_AN0(void);
-# 11 "config.c" 2
+# 8 "adc_module.c" 2
 
 
 
 
 
-void IO_First_Init(void)
+
+
+
+void Configure_ADC_Module(void)
 {
-    TRISA = 0x00;
-    TRISB = 0x00;
-    TRISC = 0x00;
+    ADCON0bits.ADRMD = 0;
 
-    ANSELA = 0x00;
-    ANSELB = 0x00;
-    ANSELC = 0x00;
+    ADCON1bits.ADFM = 0;
 
-    PORTA = 0x00;
-    PORTB = 0x00;
-    PORTC = 0x00;
+    ADCON1bits.ADCS2 = 1;
+    ADCON1bits.ADCS1 = 1;
+    ADCON1bits.ADCS0 = 0;
 
-    INTCONbits.GIE=0;
+    ADCON1bits.ADNREF = 0;
+
+    ADCON1bits.ADPREF1 = 0;
+    ADCON1bits.ADPREF0 = 0;
+
+    ADCON2bits.TRIGSEL = 0;
+
+    ADCON2bits.CHSN3 = 1;
+    ADCON2bits.CHSN2 = 1;
+    ADCON2bits.CHSN1 = 1;
+    ADCON2bits.CHSN0 = 1;
+
+    ADCON0bits.ADON = 1;
 }
 
 
 
-void Configure_Clock(void)
+void Configure_ADC_AN0(void)
 {
-    OSCCONbits.SCS0 = 0;
-    OSCCONbits.SCS1 = 0;
+    TRISAbits.TRISA0 = 1;
+
+    ANSELAbits.ANSA0 = 1;
+
+    WPUAbits.WPUA0 = 0;
+
+    ADCON0bits.CHS4 = 0;
+    ADCON0bits.CHS3 = 0;
+    ADCON0bits.CHS2 = 0;
+    ADCON0bits.CHS1 = 0;
+    ADCON0bits.CHS0 = 0;
+}
 
 
-
-    OSCCONbits.IRCF0 = 1;
-    OSCCONbits.IRCF1 = 1;
-    OSCCONbits.IRCF2 = 1;
-    OSCCONbits.IRCF3 = 1;
-# 56 "config.c"
-    OSCTUNE = 0b00011111;
+int Get_Value_From_AN0(void)
+{
+    unsigned short rez_adc = 0;
+    unsigned short high_reg = 0;
+    unsigned short low_reg = 0;
 
 
-    OSCCONbits.SPLLEN = 1;
+    ADCON0bits.GO = 1;
+    while(ADCON0bits.GO == 1){};
+
+
+    high_reg = ADRESH;
+    low_reg = ADRESL;
+    rez_adc = ((high_reg << 8) | low_reg);
+    rez_adc = rez_adc >> 4;
+
+    return rez_adc;
 }
