@@ -10283,6 +10283,8 @@ void Configure_ADC_Module(void);
 void Configure_ADC_Channel(unsigned char channel);
 
 int Get_Value_From_Channel(unsigned char channel);
+# 71 "./adc_module.h"
+unsigned char channel_mapping[14] = {0, 1, 2, 3, 5, 0, 0, 0, 2, 3, 1, 4, 0, 5};
 # 8 "adc_module.c" 2
 
 # 1 "./bit_settings.h" 1
@@ -10343,75 +10345,15 @@ void Configure_ADC_Module(void)
 
 void Configure_ADC_Channel(unsigned char channel)
 {
-    switch(channel){
-        case(0b00000):
-            TRISAbits.TRISA0 = 1;
-            ANSELAbits.ANSA0 = 1;
-            WPUAbits.WPUA0 = 0;
-            break;
-
-        case(0b00001):
-            TRISAbits.TRISA1 = 1;
-            ANSELAbits.ANSA1 = 1;
-            WPUAbits.WPUA1 = 0;
-            break;
-
-        case(0b00010):
-            TRISAbits.TRISA2 = 1;
-            ANSELAbits.ANSA2 = 1;
-            WPUAbits.WPUA2 = 0;
-            break;
-
-        case(0b00011):
-            TRISAbits.TRISA3 = 1;
-            ANSELAbits.ANSA3 = 1;
-            WPUAbits.WPUA3 = 0;
-            break;
-
-        case(0b00100):
-            TRISAbits.TRISA5 = 1;
-            ANSELAbits.ANSA5 = 1;
-            WPUAbits.WPUA5 = 0;
-            break;
-
-        case(0b01000):
-            TRISBbits.TRISB2 = 1;
-            ANSELBbits.ANSB2 = 1;
-            WPUBbits.WPUB2 = 0;
-            break;
-
-        case(0b01001):
-            TRISBbits.TRISB3 = 1;
-            ANSELBbits.ANSB3 = 1;
-            WPUBbits.WPUB3 = 0;
-            break;
-
-        case(0b01010):
-            TRISBbits.TRISB1 = 1;
-            ANSELBbits.ANSB1 = 1;
-            WPUBbits.WPUB1 = 0;
-            break;
-
-        case(0b01011):
-            TRISBbits.TRISB4 = 1;
-            ANSELBbits.ANSB4 = 1;
-            WPUBbits.WPUB4 = 0;
-            break;
-
-        case(0b01100):
-            TRISBbits.TRISB0 = 1;
-            ANSELBbits.ANSB0 = 1;
-            WPUBbits.WPUB0 = 0;
-            break;
-
-        case(0b01101):
-            TRISBbits.TRISB5 = 1;
-            ANSELBbits.ANSB5 = 1;
-            WPUBbits.WPUB5 = 0;
-            break;
-
-        default:
-            __asm("reset");
+    if(channel & 0b1000){
+        TRISB = TRISB | (1 << channel_mapping[channel]);
+        ANSELB = ANSELB | (1 << channel_mapping[channel]);
+        WPUB = WPUB & (~(1 << channel_mapping[channel]));
+    }
+    else{
+        TRISA = TRISA | (1 << channel_mapping[channel]);
+        ANSELA = ANSELA | (1 << channel_mapping[channel]);
+        WPUA = WPUA & (~(1 << channel_mapping[channel]));
     }
 
 }

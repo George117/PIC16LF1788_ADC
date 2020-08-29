@@ -1035,6 +1035,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x LPBOR = OFF ]
 "35
 [p x LVP = ON ]
+"71 ./adc_module.h
+[; ;./adc_module.h: 71: unsigned char channel_mapping[14] = {0, 1, 2, 3, 5, 0, 0, 0, 2, 3, 1, 4, 0, 5};
+[v _channel_mapping `uc ~T0 @X0 -> 14 `i e ]
+[i _channel_mapping
+:U ..
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 5 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 1 `i `uc
+-> -> 4 `i `uc
+-> -> 0 `i `uc
+-> -> 5 `i `uc
+..
+]
 "15 main.c
 [; ;main.c: 15: float adc_result;
 [v _adc_result `f ~T0 @X0 1 e ]
@@ -1057,34 +1078,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 22:     Configure_ADC_Module();
 [e ( _Configure_ADC_Module ..  ]
 "23
-[; ;main.c: 23:     Configure_ADC_Channel(0b00000);
+[; ;main.c: 23:     Configure_ADC_Channel(0);
 [e ( _Configure_ADC_Channel (1 -> -> 0 `i `uc ]
-"28
-[; ;main.c: 28:     while(1){
+"25
+[; ;main.c: 25:     while(1){
 [e :U 716 ]
 {
-"29
-[; ;main.c: 29:         adc_result = Get_Value_From_Channel(0b00000) * 3.339/4096;
+"26
+[; ;main.c: 26:         adc_result = Get_Value_From_Channel(0) * 3.339/4096;
 [e = _adc_result -> / * -> ( _Get_Value_From_Channel (1 -> -> 0 `i `uc `d .3.339 -> -> 4096 `i `d `f ]
-"31
-[; ;main.c: 31:         LATCbits.LATC7 = 0;
+"28
+[; ;main.c: 28:         LATCbits.LATC7 = 0;
 [e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-"32
-[; ;main.c: 32:         _delay((unsigned long)((1)*(32000000/4000.0)));
+"29
+[; ;main.c: 29:         _delay((unsigned long)((1)*(32000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"33
-[; ;main.c: 33:         LATCbits.LATC7 = 1;
+"30
+[; ;main.c: 30:         LATCbits.LATC7 = 1;
 [e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-"34
-[; ;main.c: 34:         _delay((unsigned long)((1)*(32000000/4000.0)));
+"31
+[; ;main.c: 31:         _delay((unsigned long)((1)*(32000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"35
-[; ;main.c: 35:     }
+"32
+[; ;main.c: 32:     }
 }
 [e :U 715 ]
 [e $U 716  ]
 [e :U 717 ]
-"39
-[; ;main.c: 39: }
+"36
+[; ;main.c: 36: }
 [e :UE 714 ]
 }

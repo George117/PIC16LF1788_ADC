@@ -39,81 +39,20 @@ void Configure_ADC_Module(void)
     ADCON0bits.ADON = 1; // ADC Enable bit
 }
 
-/* AN0 as example
+/* Generic implementation
  */
 void Configure_ADC_Channel(unsigned char channel)
 {
-    switch(channel){
-        case(AN0):
-            TRISAbits.TRISA0 = 1;
-            ANSELAbits.ANSA0 = 1;
-            WPUAbits.WPUA0 = 0;
-            break;
- 
-        case(AN1):
-            TRISAbits.TRISA1 = 1;
-            ANSELAbits.ANSA1 = 1;
-            WPUAbits.WPUA1 = 0;
-            break;
-            
-        case(AN2):
-            TRISAbits.TRISA2 = 1;
-            ANSELAbits.ANSA2 = 1;
-            WPUAbits.WPUA2 = 0;
-            break;
-            
-        case(AN3):
-            TRISAbits.TRISA3 = 1;
-            ANSELAbits.ANSA3 = 1;
-            WPUAbits.WPUA3 = 0;
-            break;
-            
-        case(AN4):
-            TRISAbits.TRISA5 = 1;
-            ANSELAbits.ANSA5 = 1;
-            WPUAbits.WPUA5 = 0;
-            break;
-            
-        case(AN8):
-            TRISBbits.TRISB2 = 1;
-            ANSELBbits.ANSB2 = 1;
-            WPUBbits.WPUB2 = 0;
-            break;
-
-        case(AN9):
-            TRISBbits.TRISB3 = 1;
-            ANSELBbits.ANSB3 = 1;
-            WPUBbits.WPUB3 = 0;
-            break;
-
-        case(AN10):
-            TRISBbits.TRISB1 = 1;
-            ANSELBbits.ANSB1 = 1;
-            WPUBbits.WPUB1 = 0;
-            break;
-
-        case(AN11):
-            TRISBbits.TRISB4 = 1;
-            ANSELBbits.ANSB4 = 1;
-            WPUBbits.WPUB4 = 0;
-            break;
-
-        case(AN12):
-            TRISBbits.TRISB0 = 1;
-            ANSELBbits.ANSB0 = 1;
-            WPUBbits.WPUB0 = 0;                
-            break;
-
-        case(AN13):
-            TRISBbits.TRISB5 = 1;
-            ANSELBbits.ANSB5 = 1;
-            WPUBbits.WPUB5 = 0;                
-            break;
-
-        default:
-            RESET();
+    if(channel & 0b1000){
+        TRISB = TRISB | (1 << channel_mapping[channel]);
+        ANSELB = ANSELB | (1 << channel_mapping[channel]);
+        WPUB = WPUB & (~(1 << channel_mapping[channel])); 
     }
-    
+    else{
+        TRISA = TRISA | (1 << channel_mapping[channel]);
+        ANSELA = ANSELA | (1 << channel_mapping[channel]);
+        WPUA = WPUA & (~(1 << channel_mapping[channel]));  
+    }
 }
 
 

@@ -10310,6 +10310,8 @@ void Configure_ADC_Module(void);
 void Configure_ADC_Channel(unsigned char channel);
 
 int Get_Value_From_Channel(unsigned char channel);
+# 71 "./adc_module.h"
+unsigned char channel_mapping[14] = {0, 1, 2, 3, 5, 0, 0, 0, 2, 3, 1, 4, 0, 5};
 # 11 "main.c" 2
 
 
@@ -10323,13 +10325,10 @@ void main(void)
     Configure_Clock();
 
     Configure_ADC_Module();
-    Configure_ADC_Channel(0b00000);
-
-
-
+    Configure_ADC_Channel(0);
 
     while(1){
-        adc_result = Get_Value_From_Channel(0b00000) * 3.339/4096;
+        adc_result = Get_Value_From_Channel(0) * 3.339/4096;
 
         LATCbits.LATC7 = 0;
         _delay((unsigned long)((1)*(32000000/4000.0)));

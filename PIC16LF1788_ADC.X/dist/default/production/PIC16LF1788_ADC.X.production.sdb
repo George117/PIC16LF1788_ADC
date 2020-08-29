@@ -7,7 +7,7 @@
 [v _Configure_ADC_Module Configure_ADC_Module `(v  1 e 1 0 ]
 "44
 [v _Configure_ADC_Channel Configure_ADC_Channel `(v  1 e 1 0 ]
-"120
+"60
 [v _Get_Value_From_Channel Get_Value_From_Channel `(i  1 e 2 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
@@ -29,6 +29,8 @@
 [v _Configure_Clock Configure_Clock `(v  1 e 1 0 ]
 "17 D:\Git\PIC16LF1788_ADC\PIC16LF1788_ADC.X\main.c
 [v _main main `(v  1 e 1 0 ]
+"71 D:\Git\PIC16LF1788_ADC\PIC16LF1788_ADC.X/adc_module.h
+[v _channel_mapping channel_mapping `[14]uc  1 e 14 0 ]
 [s S31 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
@@ -54,36 +56,8 @@
 [v _PORTC PORTC `VEuc  1 e 1 @14 ]
 "1195
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
-[s S278 . 1 `uc 1 TRISA0 1 0 :1:0 
-`uc 1 TRISA1 1 0 :1:1 
-`uc 1 TRISA2 1 0 :1:2 
-`uc 1 TRISA3 1 0 :1:3 
-`uc 1 TRISA4 1 0 :1:4 
-`uc 1 TRISA5 1 0 :1:5 
-`uc 1 TRISA6 1 0 :1:6 
-`uc 1 TRISA7 1 0 :1:7 
-]
-"1215
-[s S287 . 1 `uc 1 TRISA 1 0 :8:0 
-]
-[u S289 . 1 `S278 1 . 1 0 `S287 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES289  1 e 1 @140 ]
 "1265
 [v _TRISB TRISB `VEuc  1 e 1 @141 ]
-[s S356 . 1 `uc 1 TRISB0 1 0 :1:0 
-`uc 1 TRISB1 1 0 :1:1 
-`uc 1 TRISB2 1 0 :1:2 
-`uc 1 TRISB3 1 0 :1:3 
-`uc 1 TRISB4 1 0 :1:4 
-`uc 1 TRISB5 1 0 :1:5 
-`uc 1 TRISB6 1 0 :1:6 
-`uc 1 TRISB7 1 0 :1:7 
-]
-"1285
-[s S365 . 1 `uc 1 TRISB 1 0 :8:0 
-]
-[u S367 . 1 `S356 1 . 1 0 `S365 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES367  1 e 1 @141 ]
 "1335
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
 "1849
@@ -108,7 +82,7 @@
 [v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
 "2068
 [v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
-[s S176 . 1 `uc 1 ADON 1 0 :1:0 
+[s S177 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -118,19 +92,19 @@
 `uc 1 ADRMD 1 0 :1:7 
 ]
 "2118
-[s S185 . 1 `uc 1 . 1 0 :1:0 
+[s S186 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADGO 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
-[s S189 . 1 `uc 1 . 1 0 :1:0 
+[s S190 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[s S192 . 1 `uc 1 . 1 0 :1:0 
+[s S193 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 DONE 1 0 :1:1 
 ]
-[u S195 . 1 `S176 1 . 1 0 `S185 1 . 1 0 `S189 1 . 1 0 `S192 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES195  1 e 1 @157 ]
-[s S220 . 1 `uc 1 ADPREF0 1 0 :1:0 
+[u S196 . 1 `S177 1 . 1 0 `S186 1 . 1 0 `S190 1 . 1 0 `S193 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES196  1 e 1 @157 ]
+[s S221 . 1 `uc 1 ADPREF0 1 0 :1:0 
 `uc 1 ADPREF1 1 0 :1:1 
 `uc 1 ADNREF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -140,13 +114,13 @@
 `uc 1 ADFM 1 0 :1:7 
 ]
 "2205
-[s S229 . 1 `uc 1 ADPREF 1 0 :2:0 
+[s S230 . 1 `uc 1 ADPREF 1 0 :2:0 
 `uc 1 . 1 0 :2:2 
 `uc 1 ADCS 1 0 :3:4 
 ]
-[u S233 . 1 `S220 1 . 1 0 `S229 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES233  1 e 1 @158 ]
-[s S250 . 1 `uc 1 CHSN0 1 0 :1:0 
+[u S234 . 1 `S221 1 . 1 0 `S230 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES234  1 e 1 @158 ]
+[s S251 . 1 `uc 1 CHSN0 1 0 :1:0 
 `uc 1 CHSN1 1 0 :1:1 
 `uc 1 CHSN2 1 0 :1:2 
 `uc 1 CHSN3 1 0 :1:3 
@@ -156,11 +130,11 @@
 `uc 1 TRIGSEL3 1 0 :1:7 
 ]
 "2276
-[s S259 . 1 `uc 1 CHSN 1 0 :4:0 
+[s S260 . 1 `uc 1 CHSN 1 0 :4:0 
 `uc 1 TRIGSEL 1 0 :4:4 
 ]
-[u S262 . 1 `S250 1 . 1 0 `S259 1 . 1 0 ]
-[v _ADCON2bits ADCON2bits `VES262  1 e 1 @159 ]
+[u S263 . 1 `S251 1 . 1 0 `S260 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES263  1 e 1 @159 ]
 [s S128 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
@@ -177,71 +151,20 @@
 [v _LATCbits LATCbits `VES139  1 e 1 @270 ]
 "3676
 [v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
-[s S304 . 1 `uc 1 ANSA0 1 0 :1:0 
-`uc 1 ANSA1 1 0 :1:1 
-`uc 1 ANSA2 1 0 :1:2 
-`uc 1 ANSA3 1 0 :1:3 
-`uc 1 ANSA4 1 0 :1:4 
-`uc 1 ANSA5 1 0 :1:5 
-`uc 1 . 1 0 :1:6 
-`uc 1 ANSA7 1 0 :1:7 
-]
-"3696
-[s S313 . 1 `uc 1 ANSELA 1 0 :8:0 
-]
-[u S315 . 1 `S304 1 . 1 0 `S313 1 . 1 0 ]
-[v _ANSELAbits ANSELAbits `VES315  1 e 1 @396 ]
 "3741
 [v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
-[s S382 . 1 `uc 1 ANSB0 1 0 :1:0 
-`uc 1 ANSB1 1 0 :1:1 
-`uc 1 ANSB2 1 0 :1:2 
-`uc 1 ANSB3 1 0 :1:3 
-`uc 1 ANSB4 1 0 :1:4 
-`uc 1 ANSB5 1 0 :1:5 
-`uc 1 ANSB6 1 0 :1:6 
-]
-"3760
-[s S390 . 1 `uc 1 ANSELB 1 0 :6:0 
-]
-[u S392 . 1 `S382 1 . 1 0 `S390 1 . 1 0 ]
-[v _ANSELBbits ANSELBbits `VES392  1 e 1 @397 ]
 "3805
 [v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
-[s S330 . 1 `uc 1 WPUA0 1 0 :1:0 
-`uc 1 WPUA1 1 0 :1:1 
-`uc 1 WPUA2 1 0 :1:2 
-`uc 1 WPUA3 1 0 :1:3 
-`uc 1 WPUA4 1 0 :1:4 
-`uc 1 WPUA5 1 0 :1:5 
-`uc 1 WPUA6 1 0 :1:6 
-`uc 1 WPUA7 1 0 :1:7 
-]
-"4926
-[s S339 . 1 `uc 1 WPUA 1 0 :8:0 
-]
-[u S341 . 1 `S330 1 . 1 0 `S339 1 . 1 0 ]
-[v _WPUAbits WPUAbits `VES341  1 e 1 @524 ]
-[s S406 . 1 `uc 1 WPUB0 1 0 :1:0 
-`uc 1 WPUB1 1 0 :1:1 
-`uc 1 WPUB2 1 0 :1:2 
-`uc 1 WPUB3 1 0 :1:3 
-`uc 1 WPUB4 1 0 :1:4 
-`uc 1 WPUB5 1 0 :1:5 
-`uc 1 WPUB6 1 0 :1:6 
-`uc 1 WPUB7 1 0 :1:7 
-]
-"4996
-[s S415 . 1 `uc 1 WPUB 1 0 :8:0 
-]
-[u S417 . 1 `S406 1 . 1 0 `S415 1 . 1 0 ]
-[v _WPUBbits WPUBbits `VES417  1 e 1 @525 ]
+"4906
+[v _WPUA WPUA `VEuc  1 e 1 @524 ]
+"4976
+[v _WPUB WPUB `VEuc  1 e 1 @525 ]
 "15 D:\Git\PIC16LF1788_ADC\PIC16LF1788_ADC.X\main.c
 [v _adc_result adc_result `f  1 e 4 0 ]
 "17
 [v _main main `(v  1 e 1 0 ]
 {
-"39
+"36
 } 0
 "10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
@@ -261,17 +184,17 @@
 "8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S819 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S626 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S824 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S827 . 4 `l 1 i 4 0 `d 1 f 4 0 `S819 1 fAsBytes 4 0 `S824 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S827  1 a 4 34 ]
+[s S631 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S634 . 4 `l 1 i 4 0 `d 1 f 4 0 `S626 1 fAsBytes 4 0 `S631 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S634  1 a 4 34 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 28 ]
-[s S896 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S703 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S899 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S896 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S899  1 a 2 38 ]
+[u S706 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S703 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S706  1 a 2 38 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 33 ]
 "11
@@ -322,21 +245,21 @@
 {
 "31
 } 0
-"120 D:\Git\PIC16LF1788_ADC\PIC16LF1788_ADC.X\adc_module.c
+"60 D:\Git\PIC16LF1788_ADC\PIC16LF1788_ADC.X\adc_module.c
 [v _Get_Value_From_Channel Get_Value_From_Channel `(i  1 e 2 0 ]
 {
 [v Get_Value_From_Channel@channel channel `uc  1 a 1 wreg ]
-"122
+"62
 [v Get_Value_From_Channel@rez_adc rez_adc `us  1 a 2 9 ]
-"124
+"64
 [v Get_Value_From_Channel@low_reg low_reg `us  1 a 2 7 ]
-"123
+"63
 [v Get_Value_From_Channel@high_reg high_reg `us  1 a 2 5 ]
-"120
+"60
 [v Get_Value_From_Channel@channel channel `uc  1 a 1 wreg ]
-"123
+"63
 [v Get_Value_From_Channel@channel channel `uc  1 a 1 4 ]
-"141
+"81
 } 0
 "35 D:\Git\PIC16LF1788_ADC\PIC16LF1788_ADC.X\config.c
 [v _Configure_Clock Configure_Clock `(v  1 e 1 0 ]
@@ -353,6 +276,7 @@
 {
 [v Configure_ADC_Channel@channel channel `uc  1 a 1 wreg ]
 [v Configure_ADC_Channel@channel channel `uc  1 a 1 wreg ]
-[v Configure_ADC_Channel@channel channel `uc  1 a 1 2 ]
-"117
+"46
+[v Configure_ADC_Channel@channel channel `uc  1 a 1 1 ]
+"57
 } 0

@@ -38,17 +38,35 @@ void Configure_ADC_Channel(unsigned char channel);
 
 int Get_Value_From_Channel(unsigned char channel);
 
-#define AN0  0b00000
-#define AN1  0b00001
-#define AN2  0b00010
-#define AN3  0b00011
-#define AN4  0b00100
-#define AN8  0b01000
-#define AN9  0b01001
-#define AN10 0b01010
-#define AN11 0b01011
-#define AN12 0b01100
-#define AN13 0b01101
+#define AN0  0
+#define AN1  1
+#define AN2  2
+#define AN3  3
+#define AN4  4
+#define AN8  8
+#define AN9  9
+#define AN10 10
+#define AN11 11
+#define AN12 12
+#define AN13 13
+
+
+#define RA0 0
+#define RA1 1
+#define RA2 2
+#define RA3 3
+#define RA5 5
+
+#define RB0 0
+#define RB1 1 
+#define RB2 2
+#define RB3 3
+#define RB4 4
+#define RB5 5
+
+#define INV 0
+
+unsigned char channel_mapping[14] = {RA0, RA1, RA2, RA3, RA5, INV, INV, INV, RB2, RB3, RB1, RB4, RB0, RB5};
 
 
 #ifdef	__cplusplus

@@ -20,13 +20,10 @@ void main(void)
     Configure_Clock();    
     
     Configure_ADC_Module();
-    Configure_ADC_Channel(AN13);
+    Configure_ADC_Channel(AN0);
 
-
-
-    
     while(1){
-        adc_result = Get_Value_From_Channel(AN13) * resolution;
+        adc_result = Get_Value_From_Channel(AN0) * resolution;
         
         LATCbits.LATC7 = 0;
         __delay_ms(1);
